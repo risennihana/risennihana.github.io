@@ -55,8 +55,8 @@
 .s-item:hover { transform: translateY(-2px); border-color: #FFC2D1; box-shadow: 0 6px 15px rgba(255, 194, 209, 0.3); }
 
 .s-info { display: flex; flex-direction: column; gap: 5px; flex: 1; }
-/* 修改：s-name字号从0.95em缩小到0.7em */
-.s-name { font-weight: bold; color: #9C757D; font-size: 0.6em; }
+/* 修改：s-name字号从0.95em缩小到0.5em */
+.s-name { font-weight: bold; color: #9C757D; font-size: 0.4em; }
 .s-price { color: #D48B9D; font-size: 0.85em; font-weight: bold; }
 /* 修改：s-eff（你写的s-ineff）字号从0.75em缩小到0.7em */
 .s-eff { color: #A88C91; font-size: 0.7em; background: #FDF9F9; padding: 3px 6px; border-radius: 6px; width: fit-content; }
