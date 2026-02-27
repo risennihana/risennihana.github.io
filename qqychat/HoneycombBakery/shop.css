@@ -2,7 +2,7 @@
     /* 使用多重背景：上层是渐变遮罩，下层是用户指定的图片 */
     background: 
         linear-gradient(to bottom, rgba(255, 253, 246, 0.1) 0px, rgba(255, 253, 246, 0.4) 100px, rgba(255, 253, 246, 0.6) 120px),
-        url('https://img.heliar.top/file/1771999529950_1.png') center/cover no-repeat;
+        url('https://cdn.jsdelivr.net/gh/risennihana/risennihana.github.io/qqychat/HoneycombBakery/sbg.png') center/cover no-repeat;
     background-color: #FFFDF6; /* 兜底背景色 */
     border: 2px solid #FFE4E8;
     border-radius: 20px;
