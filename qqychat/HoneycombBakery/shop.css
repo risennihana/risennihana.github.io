@@ -1,8 +1,8 @@
 .s-box {
     /* 使用多重背景：上层是渐变遮罩，下层是用户指定的图片 */
     background: 
-        linear-gradient(to bottom, rgba(255, 253, 246, 0.1) 0, rgba(255, 253, 246, 0.1) 30px, rgba(255, 253, 246, 1) 40px),
-        url('https://img.heliar.top/file/1771999529950_1.png') center/cover no-repeat;
+        linear-gradient(to bottom, rgba(255, 253, 246, 0.1) 0, rgba(255, 253, 246, 0.1) 30px, rgba(255, 253, 246, 0.1) 40px),
+        url('https://img.heliar.top/file/1771999529950_1.png') center/200px 200px no-repeat;
     background-color: #FFFDF6; /* 兜底背景色 */
     border: 2px solid #FFE4E8;
     border-radius: 20px;
@@ -55,9 +55,11 @@
 .s-item:hover { transform: translateY(-2px); border-color: #FFC2D1; box-shadow: 0 6px 15px rgba(255, 194, 209, 0.3); }
 
 .s-info { display: flex; flex-direction: column; gap: 5px; flex: 1; }
-.s-name { font-weight: bold; color: #9C757D; font-size: 0.95em; }
+/* 修改：s-name字号从0.95em缩小到0.7em */
+.s-name { font-weight: bold; color: #9C757D; font-size: 0.7em; }
 .s-price { color: #D48B9D; font-size: 0.85em; font-weight: bold; }
-.s-eff { color: #A88C91; font-size: 0.75em; background: #FDF9F9; padding: 3px 6px; border-radius: 6px; width: fit-content; }
+/* 修改：s-eff（你写的s-ineff）字号从0.75em缩小到0.7em */
+.s-eff { color: #A88C91; font-size: 0.7em; background: #FDF9F9; padding: 3px 6px; border-radius: 6px; width: fit-content; }
 
 /* === 控件 === */
 .s-ctrl { display: flex; align-items: center; gap: 10px; margin-left: 10px; }
@@ -97,8 +99,9 @@
     align-items: center; 
     gap: 12px;
 }
+/* 修改：s-tip字号从0.75em缩小到0.5em */
 .s-tip { 
-    font-size: 0.75em; 
+    font-size: 0.5em; 
     color: #B57C8A; 
     opacity: 0; 
     transform: translateX(10px); 
