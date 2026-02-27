@@ -88,10 +88,37 @@
     justify-content: space-between; 
     position: relative; 
 }
-.s-total { display: flex; align-items: baseline; gap: 8px; }
-.s-total::before { content: "合计"; font-size: 0.85em; color: #A88C91; font-weight: bold; }
-.s-t-val { font-size: 1.8em; color: #D48B9D; font-weight: bold; font-family: Georgia, serif; line-height: 1; }
-.s-t-val::after { content: ' g'; font-size: 0.4em; color: #A88C91; margin-left: 2px; }
+
+.s-total {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap; /* 强制不换行 */
+}
+
+.s-total::before {
+  content: "合计";
+  font-size: 0.85em;
+  color: #A88C91;
+  font-weight: bold;
+}
+
+.s-t-val {
+  font-size: 1.8em;
+  color: #D48B9D;
+  font-weight: bold;
+  font-family: Georgia, serif;
+  line-height: 1;
+  display: flex;
+  align-items: baseline; /* 数字和 g 底部对齐 */
+}
+
+.s-t-val::after {
+  content: 'g'; /* 去掉你多余的空格，避免换行 */
+  font-size: 0.4em;
+  color: #A88C91;
+  margin-left: 2px;
+}
 
 /* 购买与提示语包裹区 */
 .s-buy-area { 
@@ -99,9 +126,9 @@
     align-items: center; 
     gap: 12px;
 }
-/* 修改：s-tip字号从0.75em缩小到0.5em */
+/* 修改：s-tip字号从0.75em缩小到0.2em */
 .s-tip { 
-    font-size: 0.5em; 
+    font-size: 0.2em; 
     color: #B57C8A; 
     opacity: 0; 
     transform: translateX(10px); 
