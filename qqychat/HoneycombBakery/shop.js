@@ -1,1 +1,18 @@
 function getModuleRoot(el){return el.closest('.s-box');}function changeQty(btn,delta){const moduleRoot=getModuleRoot(btn);const disp=btn.parentElement.querySelector('.s-qty');const val=Math.max(0,parseInt(disp.innerText)+delta);disp.innerText=val;updateModule(moduleRoot);}function toggleTool(btn){const moduleRoot=getModuleRoot(btn);btn.classList.toggle('active');btn.innerText=btn.classList.contains('active')?'已选中':'未选中';updateModule(moduleRoot);}function updateModule(moduleRoot){let items=[];let curT=0;moduleRoot.querySelectorAll('.cons').forEach(el=>{const q=parseInt(el.querySelector('.s-qty').innerText);if(q>0){items.push(el.dataset.name+' x '+q);curT+=q*parseInt(el.dataset.price,10);}});moduleRoot.querySelectorAll('.tool').forEach(el=>{if(el.querySelector('.s-btn-t').classList.contains('active')){items.push(el.dataset.name);curT+=parseInt(el.dataset.price,10);}});moduleRoot.querySelector('.s-t-val').innerText=curT;moduleRoot.querySelector('.s-list').innerText=items.length?items.join(' ，'):'';}function fallbackCopyText(text){let tmp=document.createElement("textarea");tmp.value=text;tmp.style.position='fixed';tmp.style.top='0';tmp.style.left='0';tmp.style.opacity='0';document.body.appendChild(tmp);tmp.focus();tmp.select();try{document.execCommand('copy');}catch(err){console.error('复制指令下达阻断',err);}document.body.removeChild(tmp);}function copyModule(btn){const moduleRoot=getModuleRoot(btn);const curT=parseInt(moduleRoot.querySelector('.s-t-val').innerText);if(curT===0)return;const balText=moduleRoot.querySelector('.s-bal').innerText;const bal=parseInt(balText.match(/\d+/)[0]);const tip=moduleRoot.querySelector('.s-tip');if(curT>bal){btn.classList.add('err');btn.innerText='余额不足';tip.innerText='抱歉，您的余额不足';tip.classList.add('error-text','show');fallbackCopyText("");setTimeout(()=>{btn.classList.remove('err');btn.innerText='购买';tip.classList.remove('show','error-text');},2000);return;}let items=[];moduleRoot.querySelectorAll('.cons').forEach(el=>{const q=el.querySelector('.s-qty').innerText;if(q>0)items.push(el.dataset.name+q+'个');});moduleRoot.querySelectorAll('.tool').forEach(el=>{if(el.querySelector('.s-btn-t').classList.contains('active'))items.push(el.dataset.name+'1个');});const cmd='【$花费'+curT+'g，购买'+items.join('，')+'】';if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(cmd).catch(()=>fallbackCopyText(cmd));}else{fallbackCopyText(cmd);}btn.classList.add('success');btn.innerText='已生成';tip.innerText='已复制！';tip.classList.add('show');setTimeout(()=>{btn.classList.remove('success');btn.innerText='购买';tip.classList.remove('show');},2000);}
+// 全局事件委托（适配外链、动态DOM）
+document.body.addEventListener('click', function(e) {
+    const target = e.target;
+    // 数量按钮
+    if (target.classList.contains('s-btn-q')) {
+        const delta = target.dataset.o === '+' ? 1 : -1;
+        changeQty(target, delta);
+    }
+    // 工具按钮
+    else if (target.classList.contains('s-btn-t')) {
+        toggleTool(target);
+    }
+    // 购买按钮
+    else if (target.classList.contains('s-buy')) {
+        copyModule(target);
+    }
+});
