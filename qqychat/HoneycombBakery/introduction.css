@@ -448,33 +448,3 @@ input[type="radio"],
   z-index: 3;
 }
 
-/* ========== 只隐藏滚动条，不影响内容 ========== */
-/* Webkit浏览器（Chrome/Safari/Edge）：滚动条宽度设为0，彻底隐藏 */
-.panel::-webkit-scrollbar,
-.gallery-wrap::-webkit-scrollbar,
-.gallery::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-  background: transparent;
-}
-
-/* 确保手帐本内容区域不被裁剪 */
-.slide, .slide-custom-content {
-  overflow: visible !important;
-  width: 100%;
-  height: 100%;
-}
-
-/* ========== 强制保证手帐本显示的兜底样式 ========== */
-#diary-toggle:checked ~ .panel {
-  display: flex !important; /* 勾选后强制显示面板 */
-  opacity: 1 !important;
-}
-
-.backgroundimg {
-  display: block !important; /* 初始按钮图片强制显示 */
-}
-
-#diary-toggle:checked ~ label[for="diary-toggle"] .backgroundimg {
-  display: none !important; /* 点击后隐藏按钮 */
-}
