@@ -16,8 +16,8 @@ body {
   /* 移除强制占满视口的样式 */
   /* 注释掉：display: flex; justify-content: center; align-items: center; min-height: 100vh; */
   font-family: 'F51', system-ui, sans-serif; 
-  /* 移除overflow: hidden，避免影响其他组件 */
-  /* overflow: hidden; */
+  -ms-overflow-style: none;  /* 隐藏IE/Edge的滚动条 */
+  scrollbar-width: none;     /* 隐藏Firefox的滚动条 */
 }
 
 input[type="radio"],
