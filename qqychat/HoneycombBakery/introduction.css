@@ -136,7 +136,7 @@ input[type="radio"],
   z-index: 3;
 }
 
-/* ===== 7页统一五级分层动画 ===== */
+/* ===== 7页统一六级分层动画 (新增layer-6) ===== */
 .slide-custom-content {
   display: flex;
   flex-direction: column;
@@ -178,7 +178,16 @@ input[type="radio"],
   z-index: 5;
 }
 
-.layer-1, .layer-2, .layer-3, .layer-4, .layer-5 {
+/* 新增tc层基础样式 */
+.tc {
+  position: absolute !important;
+  font-size: 12px;
+  line-height: 1.5;
+  z-index: 6;
+  color: #886655; /* 补充文字默认颜色 */
+}
+
+.layer-1, .layer-2, .layer-3, .layer-4, .layer-5, .layer-6 { /* 新增layer-6 */
   opacity: 0;
   transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -187,6 +196,7 @@ input[type="radio"],
 .layer-3 { transform: scale(0.9); }
 .layer-4 { transform: translateY(15px); }
 .layer-5 { transform: translateY(20px); }
+.layer-6 { transform: translateY(25px); } /* 新增layer-6动画初始状态 */
 
 #page1:checked ~ .gallery-wrap .gallery .slide1 .layer-1,
 #page2:checked ~ .gallery-wrap .gallery .slide2 .layer-1,
@@ -238,48 +248,78 @@ input[type="radio"],
   opacity: 1; transform: translateY(0); transition-delay: 0.4s;
 }
 
+/* 新增layer-6动画效果 */
+#page1:checked ~ .gallery-wrap .gallery .slide1 .layer-6,
+#page2:checked ~ .gallery-wrap .gallery .slide2 .layer-6,
+#page3:checked ~ .gallery-wrap .gallery .slide3 .layer-6,
+#page4:checked ~ .gallery-wrap .gallery .slide4 .layer-6,
+#page5:checked ~ .gallery-wrap .gallery .slide5 .layer-6,
+#page6:checked ~ .gallery-wrap .gallery .slide6 .layer-6,
+#page7:checked ~ .gallery-wrap .gallery .slide7 .layer-6 {
+  opacity: 1; transform: translateY(0); transition-delay: 0.5s;
+}
+
 /* ===== 每页专属样式模板 ===== */
 .slide1 .bk { width: 100%; height: 180px; position: absolute; left: 5px; bottom: 5px; }
 .slide1 .dr { width: 50px; height: 50px; position: absolute; top: 20px; right: 20px; background-image: url(""); background-size: 100%; }
 .slide1 .pr { width: 100%; height: 180px; position: absolute; right: -10px; bottom: 20px; }
 .slide1 .ti { font-size: 20px; color: #FF6B8B; }
 .slide1 .tt { font-size: 14px; color: #5A3E36; line-height: 1.8; }
+/* 新增slide1的tc样式 */
+.slide1 .tc { font-size: 12px; color: #7A5C43; line-height: 1.5; left: 20px; bottom: 20px; }
 
 .slide2 .bk { background-image: url(""); background-size: cover; background-position: center; }
 .slide2 .dr { width: 60px; height: 60px; position: absolute; bottom: 30px; left: 20px; background-image: url(""); background-size: 100%; }
 .slide2 .pr { width: 95%; height: 170px; position: absolute; right: -5px; bottom: 25px; }
 .slide2 .ti { font-size: 18px; color: #E89005; }
 .slide2 .tt { font-size: 13px; color: #6B4826; line-height: 1.7; }
+/* 新增slide2的tc样式 */
+.slide2 .tc { font-size: 12px; color: #7B5836; line-height: 1.5; left: 20px; bottom: 20px; }
 
 .slide3 .bk { width: 100%; height: 180px; position: absolute; left: 5px; bottom: 3px; }
 .slide3 .dr { width: 220px; height: 320px; position: absolute; bottom: 38px; left: -3px; }
 .slide3 .pr { width: 100%; height: 180px; position: absolute; left: 5px; bottom: 30px; }
 .slide3 .ti { width: 113px; height: 63px; position: absolute; left: 80px; bottom: 148px; }
 .slide3 .tt { font-size: 14px;  color: #664221; line-height: 1.6; left: 190px; bottom: 220px; }
+/* 新增slide3的tc样式 */
+.slide3 .tc { color: #A86A38; font-size: 15px; line-height: 1.5; left: 40px; bottom: 45px; width: 300px;
+  transform: rotate(-5deg); /* 向左倾斜5度（负数左倾，正数右倾） */transform-origin: left bottom; /* 旋转原点：左下角（更贴合手写感） */text-shadow: 
+    0.5px 0.5px 0 #ffffff,
+    -0.5px -0.5px 0 #ffffff,
+    0.5px -0.5px 0 #ffffff,
+    0.5px 0.5px 0 #ffffff;}
 
 .slide4 .bk { background-image: url(""); background-size: cover; background-position: center; }
 .slide4 .dr { width: 55px; height: 55px; position: absolute; top: 30px; left: 25px; background-image: url(""); background-size: 100%; }
 .slide4 .pr { width: 98%; height: 175px; position: absolute; right: -8px; bottom: 18px; }
 .slide4 .ti { font-size: 18px; color: #D4A017; }
 .slide4 .tt { font-size: 13px; color: #7A5C38; line-height: 1.65; }
+/* 新增slide4的tc样式 */
+.slide4 .tc { font-size: 12px; color: #8A6C48; line-height: 1.5; left: 20px; bottom: 20px; }
 
 .slide5 .bk { background-image: url(""); background-size: cover; background-position: center; }
 .slide5 .dr { width: 50px; height: 50px; position: absolute; bottom: 40px; right: 25px; background-image: url(""); background-size: 100%; }
 .slide5 .pr { width: 100%; height: 180px; position: absolute; right: -10px; bottom: 20px; }
 .slide5 .ti { font-size: 19px; color: #F2A6BB; }
 .slide5 .tt { font-size: 13px; color: #6F4E37; line-height: 1.7; }
+/* 新增slide5的tc样式 */
+.slide5 .tc { font-size: 12px; color: #7F5E47; line-height: 1.5; left: 20px; bottom: 20px; }
 
 .slide6 .bk { background-image: url(""); background-size: cover; background-position: center; }
 .slide6 .dr { width: 60px; height: 60px; position: absolute; top: 40px; right: 30px; background-image: url(""); background-size: 100%; }
 .slide6 .pr { width: 95%; height: 170px; position: absolute; right: -5px; bottom: 22px; }
 .slide6 .ti { font-size: 18px; color: #66BB6A; }
 .slide6 .tt { font-size: 13px; color: #3E7B42; line-height: 1.75; }
+/* 新增slide6的tc样式 */
+.slide6 .tc { font-size: 12px; color: #4E8B52; line-height: 1.5; left: 20px; bottom: 20px; }
 
 .slide7 .bk { background-image: url(""); background-size: cover; background-position: center; }
 .slide7 .dr { width: 55px; height: 55px; position: absolute; bottom: 25px; left: 30px; background-image: url(""); background-size: 100%; }
 .slide7 .pr { width: 100%; height: 180px; position: absolute; right: -10px; bottom: 20px; }
 .slide7 .ti { font-size: 20px; color: #F5A0B0; }
 .slide7 .tt { font-size: 14px; color: #704241; line-height: 1.8; }
+/* 新增slide7的tc样式 */
+.slide7 .tc { font-size: 12px; color: #805251; line-height: 1.5; left: 20px; bottom: 20px; }
 
 .diary-coil {
   position: absolute;
