@@ -409,3 +409,11 @@ body {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+/* 全局隐藏滚动条（Edge / Chrome / Firefox 全生效） */
+*::-webkit-scrollbar {
+  display: none !important;
+}
+* {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
