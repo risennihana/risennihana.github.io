@@ -37,7 +37,6 @@ input[type="radio"],
   height: 480px;
   /* 新增：防止与其他组件重叠 */
   margin: 10px 0;
- overflow: hidden;
 }
 .slide-custom-content {
   display: flex;
@@ -401,3 +400,30 @@ input[type="radio"],
 #page5:checked ~ .gallery-wrap .dots .dot[for="page5"],
 #page6:checked ~ .gallery-wrap .dots .dot[for="page6"],
 #page7:checked ~ .gallery-wrap .dots .dot[for="page7"] { transform: translateY(42px); }
+
+.book-container {
+  /* 基础设置：禁止容器本身滚动，避免出现滚动条 */
+  overflow: hidden;
+}
+
+/* 针对手帐本内部所有子容器（防止局部出现滚动条） */
+.panel, .gallery-wrap, .gallery {
+  /* 保留内部内容溢出时的裁剪，不显示滚动条 */
+  overflow: hidden;
+  /* 兼容不同浏览器的滚动条隐藏 */
+  -ms-overflow-style: none;  /* IE/Edge浏览器 */
+  scrollbar-width: none;     /* Firefox浏览器 */
+}
+
+/* 专门隐藏Chrome/Safari/新版Edge等webkit内核浏览器的滚动条 */
+.panel::-webkit-scrollbar,
+.gallery-wrap::-webkit-scrollbar,
+.gallery::-webkit-scrollbar {
+  display: none; /* 直接隐藏滚动条元素 */
+}
+
+/* 额外防护：确保手帐本的slide区域也不会出现滚动条 */
+.slide, .slide-custom-content {
+  overflow: hidden !important;
+}
+
