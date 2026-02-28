@@ -17,8 +17,8 @@ html, body {
   background: transparent;
   font-family: 'F51', system-ui, sans-serif; 
   overflow: hidden !important; /* 强制禁止滚动 */
-  height: 600vh !important;    /* 固定视口高度 */
-  width: 400vw !important;     /* 固定视口宽度 */
+  height: 800vh !important;    /* 固定视口高度 */
+  width: 600vw !important;     /* 固定视口宽度 */
   position: fixed !important;  /* 固定视口位置 */
 }
 
