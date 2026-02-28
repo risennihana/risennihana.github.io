@@ -13,12 +13,11 @@
 }
 body {
   background: transparent;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  /* 移除强制占满视口的样式 */
+  /* 注释掉：display: flex; justify-content: center; align-items: center; min-height: 100vh; */
   font-family: 'F51', system-ui, sans-serif; 
-  overflow: hidden;
+  /* 移除overflow: hidden，避免影响其他组件 */
+  /* overflow: hidden; */
 }
 
 input[type="radio"],
@@ -28,11 +27,16 @@ input[type="radio"],
 
 .book-container {
   position: relative;
-  display: flex;
+  display: inline-flex; /* 改为inline-flex，适应流式布局 */
   align-items: center;
   justify-content: center;
-  min-height: 480px;
+  /* 移除强制最小高度，改为自适应 */
+  /* min-height: 480px; */
   width: 100%;
+  /* 新增：设置合适的固定高度，避免高度溢出 */
+  height: 480px;
+  /* 新增：防止与其他组件重叠 */
+  margin: 10px 0;
 }
 .slide-custom-content {
   display: flex;
