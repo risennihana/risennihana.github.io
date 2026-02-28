@@ -37,6 +37,7 @@ input[type="radio"],
   height: 480px;
   /* 新增：防止与其他组件重叠 */
   margin: 10px 0;
+ overflow: hidden;
 }
 .slide-custom-content {
   display: flex;
