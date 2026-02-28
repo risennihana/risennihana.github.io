@@ -401,29 +401,33 @@ input[type="radio"],
 #page6:checked ~ .gallery-wrap .dots .dot[for="page6"],
 #page7:checked ~ .gallery-wrap .dots .dot[for="page7"] { transform: translateY(42px); }
 
+/* 核心：手帐本容器不裁剪内容，只隐藏滚动条 */
 .book-container {
-  /* 基础设置：禁止容器本身滚动，避免出现滚动条 */
-  overflow: hidden;
+  overflow: visible !important; /* 允许内容突出显示，不裁剪 */
 }
 
-/* 针对手帐本内部所有子容器（防止局部出现滚动条） */
+/* 手帐本内部容器：隐藏滚动条但保留内容溢出 */
 .panel, .gallery-wrap, .gallery {
-  /* 保留内部内容溢出时的裁剪，不显示滚动条 */
-  overflow: hidden;
-  /* 兼容不同浏览器的滚动条隐藏 */
-  -ms-overflow-style: none;  /* IE/Edge浏览器 */
-  scrollbar-width: none;     /* Firefox浏览器 */
+  overflow: visible !important; /* 关键：取消裁剪，让右侧内容显示完整 */
+  -ms-overflow-style: none;    /* IE/Edge 隐藏滚动条 */
+  scrollbar-width: none;       /* Firefox 隐藏滚动条 */
 }
 
-/* 专门隐藏Chrome/Safari/新版Edge等webkit内核浏览器的滚动条 */
+/* 针对Webkit浏览器（Chrome/Safari）：只隐藏滚动条元素，不影响内容 */
 .panel::-webkit-scrollbar,
 .gallery-wrap::-webkit-scrollbar,
 .gallery::-webkit-scrollbar {
-  display: none; /* 直接隐藏滚动条元素 */
+  width: 0px;    /* 把滚动条宽度设为0，不是display:none */
+  height: 0px;
+  background: transparent; /* 透明背景，彻底看不见 */
 }
 
-/* 额外防护：确保手帐本的slide区域也不会出现滚动条 */
+/* 确保slide区域内容也完整显示，不被裁剪 */
 .slide, .slide-custom-content {
-  overflow: hidden !important;
+  overflow: visible !important;
 }
 
+/* 微调手帐本位置，避免右侧内容贴边 */
+.gallery-wrap {
+  margin-right: 10px; /* 给右侧留出一点空间，防止内容贴边 */
+}
