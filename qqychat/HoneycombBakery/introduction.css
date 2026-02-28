@@ -400,3 +400,12 @@ input[type="radio"],
 #page5:checked ~ .gallery-wrap .dots .dot[for="page5"],
 #page6:checked ~ .gallery-wrap .dots .dot[for="page6"],
 #page7:checked ~ .gallery-wrap .dots .dot[for="page7"] { transform: translateY(42px); }
+
+/* 隐藏整个页面的滚动条 - 兼容主流浏览器 */
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
