@@ -32,12 +32,11 @@ input[type="radio"],
   justify-content: center;
   /* 移除强制最小高度，改为自适应 */
   /* min-height: 480px; */
-  width: 90%;
+  width: 100%;
   /* 新增：设置合适的固定高度，避免高度溢出 */
   height: 480px;
   /* 新增：防止与其他组件重叠 */
   margin: 10px 0;
-  overflow: hidden;
 }
 .slide-custom-content {
   display: flex;
