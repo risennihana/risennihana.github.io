@@ -27,16 +27,13 @@ input[type="radio"],
 
 .book-container {
   position: relative;
-  display: inline-flex; /* 改为inline-flex，适应流式布局 */
+  display: flex;
   align-items: center;
   justify-content: center;
-  /* 移除强制最小高度，改为自适应 */
-  /* min-height: 480px; */
   width: 100%;
-  /* 新增：设置合适的固定高度，避免高度溢出 */
-  height: 480px;
-  /* 新增：防止与其他组件重叠 */
-  margin: 10px 0;
+  height: 480px;     /* 固定高度，不撑开外面 */
+  margin: 10px 0;    /* 正常上下间距 */
+  overflow: visible; /* 关键：允许内容突出 */
 }
 .slide-custom-content {
   display: flex;
